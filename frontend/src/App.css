@@ -1,0 +1,277 @@
+/* --- Minimalist & Clean Design System --- */
+:root {
+  --primary: #374151; /* Charcoal nhã nhặn */
+  --accent: #3b82f6; /* Xanh dương nhẹ làm điểm nhấn */
+  --bg-app: #fcfcfd;
+  --card-bg: #ffffff;
+  --text-main: #111827;
+  --text-muted: #6b7280;
+  --border-color: #f1f5f9;
+  --white: #ffffff;
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
+  --radius: 8px;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  font-family: 'Inter', -apple-system, sans-serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Navigation --- */
+.app-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.2s;
+}
+
+.logout-btn:hover {
+  color: #ef4444;
+}
+
+/* --- Hero Section (Minimal) --- */
+.hero-section {
+  padding: 3rem 10% 2rem;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--border-color);
+  text-align: left; /* Chuyển về canh trái cho tự nhiên */
+}
+
+.hero-section h1 {
+  font-size: 2.25rem;
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.hero-section p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0;
+}
+
+/* --- Container --- */
+.book-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+/* --- Book Grid --- */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2.5rem;
+}
+
+/* --- Book Card (Soft UI) --- */
+.book-card {
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.book-card img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); /* Đổ bóng cho ảnh để tạo chiều sâu */
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.book-card:hover img {
+  transform: translateY(-4px);
+}
+
+.book-card-content {
+  padding: 0.5rem 0;
+}
+
+.book-card h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.book-author {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.book-rating {
+  font-size: 0.9rem;
+  color: #f59e0b;
+  margin-bottom: 1rem;
+}
+
+.view-detail-btn {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.view-detail-btn:hover {
+  border-bottom-color: var(--accent);
+}
+
+/* --- Book Detail Page --- */
+.book-detail-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 2rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.book-info-header {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.book-info-header img {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.book-info-body h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2.5rem;
+}
+
+.book-description {
+  margin-top: 1.5rem;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+/* --- Review Section --- */
+.review-section {
+  border-top: 1px solid var(--border-color);
+  padding-top: 3rem;
+}
+
+.review-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.review-form {
+  background: #f9fafb;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 3rem;
+}
+
+.review-form h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.review-form select, 
+.review-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.review-form button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.review-card {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.review-card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.review-user {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.review-rating {
+  color: #f59e0b;
+}
+
+.review-comment {
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .hero-section { padding: 2rem 5%; }
+  .hero-section h1 { font-size: 1.75rem; }
+  .book-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+  .book-info-header {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
