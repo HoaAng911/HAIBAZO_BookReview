@@ -22,24 +22,29 @@ import com.example.book.service.BookService;
 public class BookController {
   @Autowired
   private BookService bookService;
+
   @GetMapping
-  public List<Book> getAllBook(){
+  public List<Book> getAllBook() {
     return bookService.getAllBook();
   }
+
   @GetMapping("/{id}")
-  public Book getBook(@PathVariable Long id){
+  public Book getBook(@PathVariable Long id) {
     return bookService.getBookById(id);
   }
+
   @GetMapping("/search")
-  public List<Book> searchBooks(@RequestParam String q){
-      return bookService.searchBooks(q);
+  public List<Book> searchBooks(@RequestParam String q) {
+    return bookService.searchBooks(q);
   }
+
   @PostMapping
-  public Book createBook(@RequestBody Book book){
+  public Book createBook(@RequestBody Book book) {
     return bookService.createBook(book);
   }
+
   @DeleteMapping("/{id}")
-  public void deleteBook(@PathVariable Long id){
+  public void deleteBook(@PathVariable Long id) {
     bookService.deleteBook(id);
   }
 }

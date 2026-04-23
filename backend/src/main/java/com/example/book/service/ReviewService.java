@@ -2,8 +2,6 @@ package com.example.book.service;
 
 import java.util.List;
 
-import javax.management.RuntimeErrorException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +9,8 @@ import com.example.book.model.Book;
 import com.example.book.model.Review;
 import com.example.book.model.User;
 import com.example.book.repository.ReviewRepo;
+
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ReviewService {
@@ -25,9 +25,10 @@ public class ReviewService {
     return reviewRepo.findByBookId(bookId);
   }
 
+  @Transactional
   public Review createReview(Long userId, Long bookId, Review review) {
     if (reviewRepo.existsByUserIdAndBookId(userId, bookId)) {
-      throw new RuntimeErrorException(null, "Already reviewd");
+      throw new RuntimeException("Already reviewed");
     }
     User user = authService.getUserById(userId);
     Book book = bookService.getBookById(bookId);

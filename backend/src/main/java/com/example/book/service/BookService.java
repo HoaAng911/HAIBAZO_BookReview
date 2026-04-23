@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.book.model.Book;
 import com.example.book.repository.BookRepo;
@@ -28,17 +29,18 @@ public class BookService {
     return byTitle.stream().distinct().toList();
   }
 
+  @Transactional
   public Book createBook(Book book) {
     return bookRepo.save(book);
   }
 
+  @Transactional
   public void deleteBook(Long id) {
     bookRepo.deleteById(id);
   }
 
-  public void updateBookRating(Long bookId,Double avgRating){
-    Book book = getBookById(bookId);
-    book.setAvgRating(avgRating);
-    bookRepo.save(book);
+  @Transactional
+  public void updateBookRating(Long bookId, Double avgRating) {
+    bookRepo.updateAvgRating(bookId, avgRating);
   }
 }
