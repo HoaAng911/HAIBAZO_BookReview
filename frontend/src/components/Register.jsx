@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api";
 import { useState } from "react"
 import './Login.css'
 import { Link, useNavigate } from "react-router-dom";
@@ -10,7 +10,7 @@ const Register = () => {
   const submit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/api/auth/register", data)
+      await api.post("/auth/register", data)
       alert("Đăng ký thành công! Hãy đăng nhập.")
       navigate('/')
     } catch (err) {

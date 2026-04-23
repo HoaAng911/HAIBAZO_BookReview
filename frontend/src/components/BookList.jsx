@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios'
+import api from "../api";
 import { Link, useNavigate } from "react-router-dom";
 import '../App.css'
 
@@ -8,7 +8,7 @@ const BookList = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/books")
+    api.get("/books")
       .then(res => setBooks(res.data))
       .catch(err => console.error("Lỗi khi tải danh sách", err))
   }, [])

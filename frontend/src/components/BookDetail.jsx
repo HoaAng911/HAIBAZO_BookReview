@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
+import api from "../api";
 import { useParams, Link } from "react-router-dom";
 import '../App.css'
 
@@ -14,7 +14,7 @@ const BookDetail = () => {
 
   useEffect(() => {
     // Fetch thông tin sách
-    axios.get(`http://localhost:8080/api/books/${id}`)
+    api.get(`/books/${id}`)
       .then(res => setBook(res.data))
       .catch(err => console.error("Lỗi khi tải chi tiết sách", err))
 
@@ -23,7 +23,7 @@ const BookDetail = () => {
   }, [id])
 
   const fetchReviews = () => {
-    axios.get(`http://localhost:8080/api/reviews/book/${id}`)
+    api.get(`/reviews/book/${id}`)
       .then(res => setReviews(res.data))
       .catch(err => console.error("Lỗi khi tải review", err))
   }
@@ -36,7 +36,7 @@ const BookDetail = () => {
     }
 
     try {
-      await axios.post("http://localhost:8080/api/reviews", {
+      await api.post("/reviews", {
         userId: user.id,
         bookId: id,
         rating: newReview.rating,

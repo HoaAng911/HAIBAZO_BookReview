@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api";
 import { useState } from "react"
 import './Login.css'
 import { Link, useNavigate } from "react-router-dom";
@@ -10,7 +10,7 @@ const Login = () => {
   const submit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8080/api/auth/login", data)
+      const res = await api.post("/auth/login", data)
       localStorage.setItem('user', JSON.stringify(res.data))
       alert("Đăng nhập thành công")
       navigate('/books')
